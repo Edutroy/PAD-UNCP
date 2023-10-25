@@ -8,11 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Fase extends Model
 {
     protected $table = 'fase'; // Nombre de la tabla "persona" si es diferente del nombre predeterminado
-    protected $primaryKey = 'FaseID';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
-        'NombreName',
-        'FechaIncio',
-        'FechaFin',
+        'nombre_fase',
     ];
 }

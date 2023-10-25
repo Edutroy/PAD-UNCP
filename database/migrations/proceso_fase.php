@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('proceso_fase', function (Blueprint $table) {
-            $table->id('TipoID');
-            $table->foreignId('IDProceso')->constrained('procesodisciplinario','ProcesoID');
-            $table->foreignId('IDFase')->constrained('fase','FaseID');
-            $table->foreignId('IDDocumento')->constrained('documento','DocumentoID');
-      
+            $table->id();
+            $table->foreignId('proceso_id')->constrained('proceso_disciplinario','id');
+            $table->foreignId('fase_id')->constrained('fase','id');
+            $table->foreignId('documento_id')->constrained('documento','id');
+            $table->string('fecha_inicio')->nullable();
+            $table->string('fecha_fin')->nullable();
+            $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

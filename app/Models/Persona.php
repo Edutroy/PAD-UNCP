@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 class Persona extends Model
 {
     protected $table = 'persona'; // Nombre de la tabla "persona" si es diferente del nombre predeterminado
-    protected $primaryKey = 'PersonaID';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
-        'Nombre',
-        'Apellidos',
-        'Correo',
-        'Telefono',
-        'DNI',
-        'IDCARGO',
+        'nombres'   ,
+        'apelllidos',
+        'correo'    ,
+        'telefono'  ,
+        'dni'       ,
+        'rol_id'    ,
     ];
    
 

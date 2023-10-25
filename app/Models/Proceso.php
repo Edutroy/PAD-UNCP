@@ -7,52 +7,63 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proceso extends Model
 {
-    protected $table = 'procesodisciplinario'; // Nombre de la tabla "persona" si es diferente del nombre predeterminado
-    protected $primaryKey = 'ProcesoID';
+    protected $table = 'proceso_disciplinario'; // Nombre de la tabla "persona" si es diferente del nombre predeterminado
+    protected $primaryKey = 'id';
 
     protected $fillable = [
-        'NumProceso',
-        'Estado',
-        'IDAmonestacion',
-        'SecretarioTecnico',
-        'TipoID',
-        'DemandadoID',
-        'DemandanteID',
-        'InstructorID',
-        'SancionadorID',
-        'OficializarID',
-        'IDInstancia',
+        'numero_proceso',
+        'estado',
+        'amonestacion_id',
+        'secretario_tecnico_id',
+       # 'proceso_fase_id',
+        'demandado_id',
+        'demandante_id',
+        'instructor_id',
+        'sancionador_id',
+        'oficializador_id',
+        'instancia',
+
+        
     ];
 
+    
 
+    public function secretarioTecnico()
+    {
+        return $this->hasOne(Persona::class,'id','secretario_tecnico_id');
+    }
     public function demandado()
     {
-        return $this->hasOne(Persona::class, 'DemandadoID', 'IDpersona');
+        return $this->hasOne(Persona::class, 'id', 'demandado_id');
     }
 
     public function demandante()
     {
-        return $this->hasOne(Persona::class, 'DemandanteID', 'IDpersona');
+        return $this->hasOne(Persona::class, 'id', 'demandante_id');
     }
 
     public function instructor()
     {
-        return $this->hasOne(Persona::class, 'InstructorID', 'IDpersona');
+        return $this->hasOne(Persona::class, 'id', 'instructor_id');
     }
 
     public function sancionador()
     {
-        return $this->hasOne(Persona::class, 'SancionadorID', 'IDpersona');
+        return $this->hasOne(Persona::class, 'id', 'sancionador_id');
     }
 
     public function oficializador()
     {
-        return $this->hasOne(Persona::class, 'OficializarID', 'IDpersona');
+        return $this->hasOne(Persona::class, 'id', 'oficializador_id');
     }
-
 
     public function amonestacion(){
 
-        return $this->hasOne(Amonestacion::class, 'IDAmonestacion', 'AmonestacionID');
+        return $this->hasOne(Amonestacion::class, 'id', 'amonestacion_id');
     }
+
+    public function proceso_fase(){
+        return $this->hasMany(Proceso_Fase::class, 'ProcesoID','IDProceso');
+    }
+
 }

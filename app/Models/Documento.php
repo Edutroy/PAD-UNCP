@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Documento extends Model
 {
     protected $table = 'documento'; // Nombre de la tabla "persona" si es diferente del nombre predeterminado
-    protected $primaryKey = 'DocumentoID';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
-        'NombreDocumento',
-        'URLDocumento',
+        'nombre',
+        'documento_url',
     ];
 
     public function cargo()

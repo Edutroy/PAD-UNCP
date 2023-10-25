@@ -8,11 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Proceso_Fase extends Model
 {
     protected $table = 'proceso_fase'; // Nombre de la tabla "persona" si es diferente del nombre predeterminado
-    protected $primaryKey = 'TipoID';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
-        'IDProceso',
-        'IDFase',
-        'IDDocumento',
+        'proceso_id',
+        'fase_id',
+        'documento_id',
+        'fecha_inicio',
+        'fecha_fin',
     ];
+
+    public function proceso(){
+        return $this->belongsTo(Proceso::class, 'IDProceso','ProcesoID');
+    }
+
 }

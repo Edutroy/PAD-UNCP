@@ -9,14 +9,14 @@ return new class extends Migration
     public function up():void
     {
         Schema::create('persona', function (Blueprint $table) {
-            $table->id('PersonaID');
-            $table->string('Nombre');
-            $table->string('Apellidos');
-            $table->string('Correo');
-            $table->string('Telefono');
-            $table->string('DNI');
-            $table->foreignId('IDCARGO')->constrained('rol','rolID');
-            
+            $table->id();
+            $table->string('nombres');
+            $table->string('apellidos');
+            $table->string('correo')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('dni')->nullable();
+            $table->foreignId('rol_id')->constrained('rol','id');
+            $table->timestamps();
         });
     }
 

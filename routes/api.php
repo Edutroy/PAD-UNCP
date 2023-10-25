@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProcesoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/procesos', [ProcesoController::class, 'index'])->name('proceso.index');
+Route::post('/procesos', [ProcesoController::class, 'store'])->name('proceso.store');
+Route::delete('/procesos/{id}', [ProcesoController::class, 'delete'])->name('proceso.delete');
+Route::put('/procesos', [ProcesoController::class, 'update'])->name('proceso.update'); 

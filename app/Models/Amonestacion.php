@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Amonestacion extends Model
 {
     protected $table = 'amonestacion'; // Nombre de la tabla "persona" si es diferente del nombre predeterminado
-    protected $primaryKey = 'AmonestacionID';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
-        'NombreAmonestacion',
+        'nombre_amonestacion',
     ];
     public function proceso()
     {
-        return $this->belongsTo(Proceso::class);
+        return $this->belongsTo(Proceso::class,'amonestacion_id', 'id');
     }
 }

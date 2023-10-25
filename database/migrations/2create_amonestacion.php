@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('amonestacion', function (Blueprint $table) {
-            $table->id('AmonestacionID');
-            $table->string('NombreAmonestacion');
-          
+            $table->id();
+            $table->string('nombre_amonestacion')->nullable();#borrar posteriormente solo es para porbar el seed sin problemas
+            $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

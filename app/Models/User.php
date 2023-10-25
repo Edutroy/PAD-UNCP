@@ -12,11 +12,11 @@ class User extends Authenticatable
 {
  
     protected $table = 'usuario'; // Nombre de la tabla "persona" si es diferente del nombre predeterminado
-    protected $primaryKey = 'UsuarioID';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
-        'Username',
-        'Password',
+        'username',
+        'password',
     ];
 
  

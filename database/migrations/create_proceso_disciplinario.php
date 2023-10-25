@@ -6,24 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('procesodisciplinario', function (Blueprint $table) {
-            $table->id('ProcesoID');
-            $table->integer('NumProceso');
-            $table->string('Estadoo');
-            $table->foreignId('IDAmonestacion')->constrained('amonestacion','AmonestacionID');
-            $table->string('SecretarioTecnico');
-            $table->integer('TipoID');
-            $table->foreignId('DemandadoID')->constrained('persona','PersonaID');
-            $table->foreignId('DemandanteID')->constrained('persona','PersonaID');
-            $table->foreignId('InstructorID')->constrained('persona','PersonaID');
-            $table->foreignId('SancionadorID')->constrained('persona','PersonaID');
-            $table->foreignId('OficializadorID')->constrained('persona','PersonaID');
-            $table->string('Instancia');
+        Schema::create('proceso_disciplinario', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('numero_proceso');
+            $table->string('estado');
+            $table->foreignId('amonestacion_id')->constrained('amonestacion','id');
+            $table->foreignId('secretario_tecnico_id')->constrained('persona','id');
+            /* $table->foreignId('proceso_fase_id')->constrained('proceso_fase','id'); */
+            $table->foreignId('demandado_id')->constrained('persona','id');
+            $table->foreignId('demandante_id')->constrained('persona','id');
+            $table->foreignId('instructor_id')->constrained('persona','id');
+            $table->foreignId('sancionador_id')->constrained('persona','id');
+            $table->foreignId('oficializador_id')->constrained('persona','id');
+            $table-> string('instancia');
+            $table->timestamps();
         });
     }
 
@@ -32,7 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('procesodisciplinario');
+        Schema::dropIfExists('proceso_disciplinario');
        
     }
 };

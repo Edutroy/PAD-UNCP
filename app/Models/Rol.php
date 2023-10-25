@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Rol extends Model
 {
      protected $table = 'rol'; // Nombre de la tabla "persona" si es diferente del nombre predeterminado
-    protected $primaryKey = 'rolID';
+    protected $primaryKey = 'id';
+    public $timestamps = false;
     protected $fillable = [
-        'NombreRol',
+        'nombre_rol',
     ];
     
     public function cargo()

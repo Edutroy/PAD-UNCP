@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('fase', function (Blueprint $table) {
-            $table->id('FaseID');
-            $table->string('FaseName');
-            $table->string('FechaInicio');
-            $table->string('FechaFin');
+            $table->id();
+            $table->string('nombre_fase');
+          
         });
     }
 
