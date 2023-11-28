@@ -12,5 +12,11 @@ class Fase extends Model
 
     protected $fillable = [
         'nombre_fase',
+        
+
     ];
+
+    public function proceso_fase(){
+        return $this->belongsToMany(Proceso::class,'Proceso_Fase','fase_id','id');
+    }
 }

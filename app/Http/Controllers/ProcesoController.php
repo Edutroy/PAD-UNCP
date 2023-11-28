@@ -3,49 +3,56 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proceso;
+use App\Models\Proceso_Fase;
 use Illuminate\Http\Request;
-
+use App\Models\Documento;
 class ProcesoController extends Controller
 {
+    
     public function index(){
         $procesos = Proceso::get();
         return $procesos;
     }
-
     public function store(Request $request)   {
-        // $validated = $request->validate([
-        //     'numero_proceso' => 'required',
-        //     'estado' => 'required',
-        //     'amonestacion_id' => 'required',
-        //     'secretario_tenico_id' => 'required',
-        //     'proceso_fase_id' => 'required',
-        //     'demandado_id' => 'required',
-        //     'demandante_id' => 'required',
-        //     'instructor_id' => 'required',
-        //     'sancionador_id' => 'required',
-        //     'oficializador_id' => 'required',
-        //     'instancia' => 'required',
-        // ]);
-        
-        // Lógica para procesar los datos enviados a través de una solicitud POST
-       # $data = $request->all();
-        // Por ejemplo, puedes crear un nuevo proceso en la base de datos
+    
+        $archivo = $request->file('files');
+
+        $ruta = $archivo->store('archivos');
+
         $nuevoProceso = Proceso::create([
             'numero_proceso' => $request->numero_proceso,
             'estado' => $request->estado,
             'amonestacion_id' => $request->amonestacion_id,
             'secretario_tecnico_id' => $request->secretario_tecnico_id,
-        /*  'proceso_fase_id' => $request->proceso_fase_id, */
+            'proceso_fase_id' => $request->proceso_fase_id, 
             'demandado_id' => $request->demandado_id,
             'demandante_id' => $request->demandante_id,
             'instructor_id' => $request->instructor_id,
             'sancionador_id' => $request->sancionador_id,
             'oficializador_id' => $request->oficializador_id,
             'instancia' => $request->instancia,
+            
         ]);
+
+        Proceso_Fase::create([
+            'proceso_id' => $nuevoProceso->id(),
+            
+        ]);
+
+        Documento::created([
+            'nombre'=> $request->documento_url,
+            'documento_url' => $request->documento_url,
+        ]);
+
+
+
+        
 
         return response()->json($nuevoProceso, 201);
     }
+    
+
+
     public function delete($id){
 
         $proceso = Proceso::find($id);
@@ -57,7 +64,6 @@ class ProcesoController extends Controller
             return response()->json(['error' => 'Registro no encontrado'], 404);
         }   
     }
-
     public function update(Request $request) {
         $data = $request->all();
 
@@ -87,5 +93,7 @@ class ProcesoController extends Controller
         return response()->json(['message' => 'Registros actualizados correctamente']);
     
 }
+
+
 
 }
