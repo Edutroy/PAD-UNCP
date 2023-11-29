@@ -19,7 +19,7 @@ class ProcesoSeeder extends Seeder
             'estado'              => 'Activo'  ,
             'amonestacion_id'     => '1'       ,
             'secretario_tecnico_id'=> '1'       ,
-            #'proceso_fase_id'     => '1'       ,
+            'proceso_fase_id'     => '1'       ,
             'demandado_id'        => '2'       ,
             'demandante_id'       => '3'       ,
             'instructor_id'       => '4'       ,

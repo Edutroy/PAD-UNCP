@@ -17,15 +17,20 @@ class FaseSeeder extends Seeder
             [
                 'id' => '1',
                 'nombre_fase'=>'Inicio',
+               
+               
                 
             ],
             [
                 'id' => '2',
                 'nombre_fase'=>'Instructora',
+             
+                
             ],
             [
                 'id' => '3',
                 'nombre_fase'=>'Sancionadora',
+                
             ],
             ];
         

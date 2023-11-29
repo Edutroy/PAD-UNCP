@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fase', function (Blueprint $table) {
+        Schema::create('subfase', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->foreignId('subfase_id')->constrained('subfase','id');
-          
+            $table->string('subfase');
+            $table->datetime('duracion');
+            $table->datetime('extendible')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fase');
+        Schema::dropIfExists('subfase');
     }
 };

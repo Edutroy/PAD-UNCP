@@ -21,5 +21,6 @@ class Proceso_Fase extends Model
     public function proceso(){
         return $this->belongsTo(Proceso::class, 'id','ProcesoID');
     }
+    
 
 }

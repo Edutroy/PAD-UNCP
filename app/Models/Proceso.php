@@ -63,7 +63,7 @@ class Proceso extends Model
     }
 
     public function proceso_fase(){
-        return $this->belongsToMany(Fase::class,'Proceso_Fase', 'id','proceso_fase_id');
+        return $this->hasMany(Fase::class, 'id','proceso_fase_id');
     }
 
 }
