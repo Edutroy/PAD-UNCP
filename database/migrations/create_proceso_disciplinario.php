@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('estado');
             $table->foreignId('amonestacion_id')->constrained('amonestacion','id');
             $table->foreignId('secretario_tecnico_id')->constrained('persona','id');
+            $table->foreignId('falta_id')->constrained('falta','id');
             $table->string('proceso_fase_id');
             $table->foreignId('demandado_id')->constrained('persona','id');
             $table->foreignId('demandante_id')->constrained('persona','id');

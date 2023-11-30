@@ -14,6 +14,7 @@ class Proceso extends Model
         'numero_proceso',
         'estado',
         'amonestacion_id',
+        'falta_id',
         'secretario_tecnico_id',
         'proceso_fase_id',
         'demandado_id',
@@ -60,6 +61,10 @@ class Proceso extends Model
     public function amonestacion(){
 
         return $this->hasOne(Amonestacion::class, 'id', 'amonestacion_id');
+    }
+    public function falta(){
+
+        return $this->hasOne(Amonestacion::class, 'id', 'falta_id');
     }
 
     public function proceso_fase(){

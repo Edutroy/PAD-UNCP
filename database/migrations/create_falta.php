@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subfase', function (Blueprint $table) {
+        Schema::create('falta', function (Blueprint $table) {
             $table->id();
-            $table->string('subfase');
-            $table->datetime('duracion');
-            $table->datetime('extendible')->nullable();
+            $table->string('nivel_falta');
+            $table->string('descripcion_falta');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subfase');
+        Schema::dropIfExists('falta');
     }
 };

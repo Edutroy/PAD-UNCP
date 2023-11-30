@@ -13,6 +13,7 @@ class Proceso_Fase extends Model
     protected $fillable = [
         'proceso_id',
         'fase_id',
+        'subfase_id',
         'documento_id',
         'fecha_inicio',
         'fecha_fin',
@@ -21,6 +22,8 @@ class Proceso_Fase extends Model
     public function proceso(){
         return $this->belongsTo(Proceso::class, 'id','ProcesoID');
     }
-    
+    public function subfase(){
+        return $this->hasMany(Subfase::class,'subfase_id','id');
+    }
 
 }

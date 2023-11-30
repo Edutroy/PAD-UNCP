@@ -7,22 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subfase extends Model
 {
-
-
-
-    
      protected $table = 'subfase'; // Nombre de la tabla "persona" si es diferente del nombre predeterminado
      protected $primaryKey = 'id';
  
      protected $fillable = [
         'subfase',
-        'duracion',
-        'extendible',
+        'time_id',
      ];
  
      public function proceso_fase(){
-         return $this->belongsTo(Fase::class,'Fase','subfase_id','id');
+         return $this->belongsTo(Proceso_Fase::class,'subfase_id','id');
      }
-
+     public function time(){
+        return $this->hasMany(Time::class,'time_id','id');
+    }
      
 }

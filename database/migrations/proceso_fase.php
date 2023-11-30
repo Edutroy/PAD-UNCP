@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('proceso_id')->constrained('proceso_disciplinario','id');
             $table->foreignId('fase_id')->constrained('fase','id');
+            $table->foreignId('subfase_id')->nullable()->constrained('subfase','id');
             $table->foreignId('documento_id')->constrained('documento','id');
             $table->string('fecha_inicio')->nullable();
             $table->string('fecha_fin')->nullable();
